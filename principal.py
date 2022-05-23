@@ -31,14 +31,15 @@ groups = {}
 groups['all_sprites'] = all_sprites
 groups['all_carros'] = all_carros
 
+tipo_do_carro = cs.aleatorio()
+carros = cs.Carros(ast.carros['policia'])
+all_sprites.add(carros)
+
 # Criando o jogador
 player = cs.Jogador(ast.carros['jogador'])
 all_sprites.add(player)
 
 
-tipo_do_carro = cs.aleatorio()
-carros = cs.Carros(ast.carros['policia'])
-all_carros.add(carros)
 
 
 

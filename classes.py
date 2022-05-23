@@ -51,16 +51,18 @@ class Carros(pygame.sprite.Sprite):
 
         self.image = img
         self.rect = self.image.get_rect()
-        self.rect.y = random.randint(WIDTH_RUA_A, (WIDTH_RUA_B-60))
-        self.speedy = -1         # funcao de acelerar velocidade
+        self.rect.x = random.randint(WIDTH_RUA_A, (WIDTH_RUA_B-130))
+        self.rect.y = 0
+        self.speedy =  2         # funcao de acelerar velocidade
 
     def update(self):
         # Atualização da posição da nave
         self.rect.y += self.speedy
 
         # Mantem dentro da tela
-        if self.rect.bottom < HEIGHT:
-            self.rect.y = random.randint(WIDTH_RUA_A, WIDTH_RUA_B)
+        if self.rect.bottom > HEIGHT:
+            self.rect.x = random.randint(WIDTH_RUA_A, (WIDTH_RUA_B-130))
+            self.rect.y = 0
             self.speedy = 2         # funcao de acelerar velocidade
 
 
