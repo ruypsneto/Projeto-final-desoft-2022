@@ -1,12 +1,12 @@
 import pygame
 
 
-WIDTH = 700
-HEIGHT = 800  
+WIDTH = 1200
+HEIGHT = 700 
 
 
-WIDTH_RUA_A=  160
-WIDTH_RUA_B = WIDTH-160
+WIDTH_RUA_A=  280
+WIDTH_RUA_B = WIDTH-280
 
 fundos = {}
 
@@ -20,11 +20,11 @@ fundos['bambus'] = pygame.transform.scale(fundos['bambus'],(WIDTH, HEIGHT))
 
 carros = {}
 
-WIDTH_CARRO =  60
-HEIGHT_CARRO = 100
+WIDTH_CARRO =  80
+HEIGHT_CARRO = 130
 
-WIDTH_CAMINHAO =  50
-HEIGHT_CAMINHAO = 200
+WIDTH_CAMINHAO =  100
+HEIGHT_CAMINHAO = 400
 
 carros['policia'] = pygame.image.load('imagens/carros/policia.png').convert()
 carros['policia'] = pygame.transform.scale(carros['policia'],(WIDTH_CARRO, HEIGHT_CARRO))

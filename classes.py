@@ -5,12 +5,12 @@ import random
 
 
 # classe player
-WIDTH = 700
-HEIGHT = 800 
+WIDTH = 1200
+HEIGHT = 700 
 
 
-WIDTH_RUA_A=  160
-WIDTH_RUA_B = WIDTH-160
+WIDTH_RUA_A=  280
+WIDTH_RUA_B = WIDTH-280
 
 
 
