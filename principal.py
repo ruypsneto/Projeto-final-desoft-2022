@@ -61,6 +61,7 @@ all_sprites.add(player)
 clock = pygame.time.Clock()
 FPS = 30
 
+pista = 0
 
 game = True
 
@@ -86,12 +87,14 @@ while game:
             game = False
 
     all_sprites.update()
-
-    
+    pista = pista % HEIGHT
     window.fill((0, 0, 0))  
-    window.blit( ast.fundos['cidade'] , (0, 0))
-    
+    window.blit(ast.fundos['cidade'], (0, pista))
+    window.blit(ast.fundos['cidade'], (0, (pista - HEIGHT)))
+
+    pista+=1
     all_sprites.draw(window)
+
 
     pygame.display.update()
 
