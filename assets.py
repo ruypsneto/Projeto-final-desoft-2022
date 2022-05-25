@@ -1,6 +1,7 @@
 import pygame
 
 
+
 WIDTH = 1200
 HEIGHT = 700 
 
@@ -16,6 +17,10 @@ fundos['cidade'] = pygame.image.load('imagens/fundos/cidade.png').convert()
 fundos['cidade'] = pygame.transform.scale(fundos['cidade'],(WIDTH, HEIGHT))
 fundos['bambus'] = pygame.image.load('imagens/fundos/bambus.png').convert()
 fundos['bambus'] = pygame.transform.scale(fundos['bambus'],(WIDTH, HEIGHT))
+fundos['inicio'] = pygame.image.load('imagens/fundos/inicio.png').convert()
+fundos['inicio'] =  pygame.transform.scale(fundos['inicio'],(WIDTH, HEIGHT))
+fundos['gameover'] = pygame.image.load('imagens/fundos/game_over.jpg').convert()
+fundos['gameover'] =  pygame.transform.scale(fundos['gameover'],(WIDTH, HEIGHT))
 
 
 carros = {}
@@ -38,5 +43,9 @@ carros['caminhaozinho'] = pygame.image.load('imagens/carros/caminhaozinho.png').
 carros['caminhaozinho'] = pygame.transform.scale(carros['caminhaozinho'],(WIDTH_CARRO, HEIGHT_CARRO))
 carros['jogador'] = pygame.image.load('imagens/carros/jogador.png').convert()
 carros['jogador'] = pygame.transform.scale(carros['jogador'],(WIDTH_CARRO, HEIGHT_CARRO))
+
+
+
+
 
 
