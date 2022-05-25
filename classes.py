@@ -65,4 +65,3 @@ class Carros(pygame.sprite.Sprite):
             self.rect.y = 0
             self.speedy = 2         # funcao de acelerar velocidade
 
-
