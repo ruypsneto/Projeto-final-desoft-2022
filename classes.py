@@ -1,6 +1,6 @@
 # vamos colocar aqui as funcoes para o jogo
 import pygame
-
+import assets as ast 
 import random
 
 
@@ -45,23 +45,29 @@ class Jogador(pygame.sprite.Sprite):
 
 
 class Carros(pygame.sprite.Sprite):
-    def __init__(self, img):
+    def __init__(self, lista):
         # Construtor da classe mãe (Sprite).
         pygame.sprite.Sprite.__init__(self)
-
-        self.image = img
+        self.image = ast.carros[aleatorio()]
         self.rect = self.image.get_rect()
         self.rect.x = random.randint(WIDTH_RUA_A, (WIDTH_RUA_B-130))
-        self.rect.y = 0
-        self.speedy =  2         # funcao de acelerar velocidade
+        lista.append(self.rect.x)
+        self.rect.y = -600
+        self.speedy =  1        # funcao de acelerar velocidade
 
     def update(self):
         # Atualização da posição da nave
         self.rect.y += self.speedy
+  
 
         # Mantem dentro da tela
-        if self.rect.bottom > HEIGHT:
-            self.rect.x = random.randint(WIDTH_RUA_A, (WIDTH_RUA_B-130))
+        if self.rect.bottom > HEIGHT+400:
+            self.image = ast.carros[aleatorio()]
+
+
+            a = random.randint(WIDTH_RUA_A, self.rect.x)
+            b =  random.randint(self.rect.x, (WIDTH_RUA_B-130)) 
+            self.rect.x = random.choice([a, b])
             self.rect.y = 0
-            self.speedy = 2         # funcao de acelerar velocidade
+                   # funcao de acelerar velocidade
 

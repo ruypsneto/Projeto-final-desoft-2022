@@ -31,9 +31,12 @@ groups = {}
 groups['all_sprites'] = all_sprites
 groups['all_carros'] = all_carros
 
-tipo_do_carro = cs.aleatorio()
-carros = cs.Carros(ast.carros['policia'])
-all_sprites.add(carros)
+lista_posicoes = []
+for i in range(3):
+    carros = cs.Carros(lista_posicoes)
+    all_sprites.add(carros)
+    all_carros.add(carros)
+
 
 # Criando o jogador
 player = cs.Jogador(ast.carros['jogador'])
@@ -87,10 +90,16 @@ while game:
             game = False
 
     all_sprites.update()
+    hits = pygame.sprite.spritecollide(player, all_carros, True)
+    if len(hits) > 0:
+        game = False
+
+
     pista = pista % HEIGHT
     window.fill((0, 0, 0))  
-    window.blit(ast.fundos['cidade'], (0, pista))
-    window.blit(ast.fundos['cidade'], (0, (pista - HEIGHT)))
+    window.blit(ast.fundos['bambus'], (0, pista))
+    window.blit(ast.fundos['bambus'], (0, (pista - HEIGHT)))
+    
 
     pista+=1
     all_sprites.draw(window)
