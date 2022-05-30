@@ -1,4 +1,6 @@
 # aqui vamo colocar a principal do game
+from tkinter import Button
+from matplotlib.font_manager import get_font
 import pygame
 pygame.init()
 
@@ -17,10 +19,6 @@ import classes as cs
 
 pygame.display.set_caption('blimbots')
 
-
-
-mouse = pygame.mouse.get_pos()
-click = pygame.mouse.get_pressed()
 
 
 state = ast.inicio
@@ -69,11 +67,11 @@ game = True
 
 # ===== Loop principal =====
 while game:
- 
+    mouse = pygame.mouse.get_pos()
     for event in pygame.event.get():
         # tela de inicio 
         if state == ast.inicio:
-            if event.type == pygame.KEYDOWN:
+            while state == ast.inicio:
                 # define mapa 
                 if mouse ==:
                     if click ==:
