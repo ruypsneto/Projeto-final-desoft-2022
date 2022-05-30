@@ -1,6 +1,10 @@
 import pygame
 
-
+state = 0
+inicio = 1
+jogando = 2
+morto = 3
+mapa = ''
 
 WIDTH = 1200
 HEIGHT = 700 
@@ -46,6 +50,10 @@ carros['jogador'] = pygame.transform.scale(carros['jogador'],(WIDTH_CARRO, HEIGH
 
 
 
+sapo = pygame.image.load('imagens/fundos/sapo.png').convert()
+sapo = pygame.transform.scale(sapo,(10, 15))
 
+
+score_font = pygame.font.Font('musicas/PressStart2P.ttf', 28)
 
 

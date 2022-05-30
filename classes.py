@@ -53,7 +53,7 @@ class Carros(pygame.sprite.Sprite):
         self.rect.x = random.randint(WIDTH_RUA_A, (WIDTH_RUA_B-130))
         lista.append(self.rect.x)
         self.rect.y = -600
-        self.speedy =  1        # funcao de acelerar velocidade
+        self.speedy = random.randint(1,3)
 
     def update(self):
         # Atualização da posição da nave
@@ -69,5 +69,8 @@ class Carros(pygame.sprite.Sprite):
             b =  random.randint(self.rect.x, (WIDTH_RUA_B-130)) 
             self.rect.x = random.choice([a, b])
             self.rect.y = 0
-                   # funcao de acelerar velocidade
+            self.speedy = random.randint(1,3)
+
+        
+
 
