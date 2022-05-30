@@ -19,7 +19,8 @@ pygame.display.set_caption('blimbots')
 
 
 
-
+mouse = pygame.mouse.get_pos()
+click = pygame.mouse.get_pressed()
 
 
 state = ast.inicio
@@ -59,7 +60,6 @@ all_sprites.add(player)
 
 
 
-
 clock = pygame.time.Clock()
 FPS = 60
 
@@ -75,12 +75,18 @@ while game:
         if state == ast.inicio:
             if event.type == pygame.KEYDOWN:
                 # define mapa 
-                if event.key == pygame.K_c:
-                    mapa = 'cidade'
-                if event.key == pygame.K_b:
-                    mapa = 'bambus'
-                if event.key == pygame.K_p:
-                    mapa = 'praia'
+                if mouse ==:
+                    if click ==:
+                        mapa = 'cidade'
+                        state = ast.jogando 
+                if mouse ==:
+                    if click ==:
+                        mapa = 'bambus'
+                        state = ast.jogando 
+                if mouse ==:
+                    if click ==:
+                        mapa = 'praia'
+                        state = ast.jogando 
                 if event.key == pygame.K_RETURN:
                     state = ast.jogando 
             if event.type == pygame.QUIT:
