@@ -12,7 +12,7 @@ HEIGHT = 700
 
 WIDTH_RUA_A=  280
 WIDTH_RUA_B = WIDTH-280
-
+#  fundos 
 fundos = {}
 
 fundos['praia'] = pygame.image.load('imagens/fundos/praia.png').convert()
@@ -27,6 +27,28 @@ fundos['gameover'] = pygame.image.load('imagens/fundos/game_over.jpg').convert()
 fundos['gameover'] =  pygame.transform.scale(fundos['gameover'],(WIDTH, HEIGHT))
 
 
+#  imagens inicio 
+WIDTH_INICIO = 1
+HEIGHT_INICIO =1
+cor_pb = {}
+
+cor_pb['praia_pb'] = pygame.image.load('imagens/fundos/inicio_praia_pb.png').convert()
+cor_pb['praia_pb'] = pygame.transform.scale(cor_pb['praia_pb'],(WIDTH_INICIO, HEIGHT_INICIO))
+cor_pb['praia'] = pygame.image.load('imagens/fundos/inicio_praia.png').convert()
+cor_pb['praia'] = pygame.transform.scale(cor_pb['praia'],(WIDTH_INICIO, HEIGHT_INICIO))
+cor_pb['cidade_pb'] = pygame.image.load('imagens/fundos/inicio_cidade_pb.png').convert()
+cor_pb['cidade_pb'] = pygame.transform.scale(cor_pb['cidade_pb'],(WIDTH_INICIO, HEIGHT_INICIO))
+cor_pb['cidade'] = pygame.image.load('imagens/fundos/inicio_cidade.png').convert()
+cor_pb['cidade'] = pygame.transform.scale(cor_pb['cidade'],(WIDTH_INICIO, HEIGHT_INICIO))
+cor_pb['bambus_pb'] = pygame.image.load('imagens/fundos/inicio_bambus_pb.png').convert()
+cor_pb['bambus_pb'] = pygame.transform.scale(cor_pb['bambus_pb'],(WIDTH_INICIO, HEIGHT_INICIO))
+cor_pb['bambus'] = pygame.image.load('imagens/fundos/inicio_bambus.png').convert()
+cor_pb['bambus'] = pygame.transform.scale(cor_pb['bambus'],(WIDTH_INICIO, HEIGHT_INICIO))
+
+
+
+
+#  carros 
 carros = {}
 
 WIDTH_CARRO =  80
