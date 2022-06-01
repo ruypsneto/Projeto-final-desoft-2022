@@ -74,27 +74,51 @@ while game:
         if state == ast.inicio:
             window.fill((0, 0, 0))
             window.blit(ast.fundos['inicio'], (0, 0))
+            window.blit(ast.cor_pb['cidade_pb'], (200, 340))
+            window.blit(ast.cor_pb['bambus_pb'], (500, 340))
+            window.blit(ast.cor_pb['praia_pb'], (850, 340))
+
+
+            if event.type == pygame.QUIT:
+                game = False
+
+
             # Verifica se o usuario passou o mouse por cima do botao
             print(mouse)
-            if mouse[0]<= 100 and mouse[1]<= 100:
-                window.blit(ast.cor_pb['cidade'], (100, 100))
+            if  mouse[0]>= 200 and mouse[1]>= 400 and mouse[1]<= 400+ ast.HEIGHT_INICIO and mouse[0]<= 200 + ast.WIDTH_INICIO :
+                window.blit(ast.cor_pb['cidade'], (200, 340))
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                    
                     mapa = 'cidade'
                     state = ast.antes_de_start 
-            if mouse[0]<= 300 and mouse[1]<= 100:
-                window.blit(ast.cor_pb['bambus'], (300,100))
+                    window.blit(ast.fundos[mapa], (0, 0))
+                    break
+
+            elif   mouse[0]>= 500 and mouse[1]>= 390 and mouse[1]<= 390+ ast.HEIGHT_INICIO and mouse[0]<= 500 + ast.WIDTH_INICIO :
+                window.blit(ast.cor_pb['bambus'], (500,340))
+
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mapa = 'bambus'
                     state = ast.antes_de_start
-            if mouse[0]<= 500 and mouse[1]<= 100:
-                window.blit(ast.cor_pb['praia'], (500, 100))
+                    window.blit(ast.fundos[mapa], (0, 0))
+                    break
+
+            elif  mouse[0]>= 850 and mouse[1]>= 400 and mouse[1]<= 400+ ast.HEIGHT_INICIO and mouse[0]<= 850 + ast.WIDTH_INICIO :
+
+                window.blit(ast.cor_pb['praia'], (850, 340))
+
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     mapa = 'praia'
                     state = ast.antes_de_start
-            if event.type == pygame.QUIT:
-                game = False
+                    window.blit(ast.fundos[mapa], (0, 0))
+                    break
+            
+            
+
+
+
+
 
             pygame.display.update()
     
@@ -102,6 +126,10 @@ while game:
 
         elif state == ast.antes_de_start :
             # rodando o jogo 
+            window.fill((0, 0, 0))  
+            window.blit(ast.fundos[mapa], (0, 0))
+
+        
             if event.type == pygame.KEYUP:
                 if event.type == pygame.QUIT:
                     game = False
@@ -163,7 +191,7 @@ while game:
                     all_sprites.add(c)
                     all_carros.add(c)
                     distancia = 0 
-                    vida -= 2
+                    vida -= 1
                     if vida == 0:
                         correndo = False
                         state = ast.morto
