@@ -76,31 +76,23 @@ while game:
             window.blit(ast.fundos['inicio'], (0, 0))
             # Verifica se o usuario passou o mouse por cima do botao
             print(mouse)
-            if mouse[0]>= 100 and mouse[1]>= 100:
-                window.blit(ast.cor_pb['cidade'], (0, 0))
+            if mouse[0]<= 100 and mouse[1]<= 100:
+                window.blit(ast.cor_pb['cidade'], (100, 100))
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                    
                     mapa = 'cidade'
                     state = ast.antes_de_start 
-               
-            # while mouse[0] == 0 and mouse[1] == 0:
-            #     cs.Menu.image = ast.cor_pb['bambus']
-            #     if pygame.MOUSEBUTTONDOWN:
-            #         mapa = 'bambus'
-            #         state = ast.jogando
-            #     if pygame.MOUSEBUTTONDOWN:
-            #         mapa = 'bambus'
-            #         state = ast.jogando 
-            # while mouse in cs.Menu.rect:
-            #     cs.Menu.image = ast.cor_pb['praia']
-            #     if pygame.MOUSEBUTTONDOWN:
-            #         mapa = 'praia'
-            #         state = ast.jogando
-            # else :
-            #     cs.Menu.image = ast.cor_pb['cidade','bambus','praia']
-            # if event.key == pygame.K_RETURN:
-            #     state = ast.jogando 
+            if mouse[0]<= 300 and mouse[1]<= 100:
+                window.blit(ast.cor_pb['bambus'], (300,100))
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    mapa = 'bambus'
+                    state = ast.antes_de_start
+            if mouse[0]<= 500 and mouse[1]<= 100:
+                window.blit(ast.cor_pb['praia'], (500, 100))
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    mapa = 'praia'
+                    state = ast.antes_de_start
             if event.type == pygame.QUIT:
                 game = False
 
