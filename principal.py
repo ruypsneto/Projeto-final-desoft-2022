@@ -72,22 +72,38 @@ while game:
         # tela de inicio 
         
         if state == ast.inicio:
-            if event.type == pygame.KEYDOWN:
-                # define mapa 
-                if event.key == pygame.K_c:
+            window.fill((0, 0, 0))
+            window.blit(ast.fundos['inicio'], (0, 0))
+            # Verifica se o usuario passou o mouse por cima do botao
+            print(mouse)
+            if mouse[0]>= 100 and mouse[1]>= 100:
+                window.blit(ast.cor_pb['cidade'], (0, 0))
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                   
                     mapa = 'cidade'
-                    state =  ast.antes_de_start
-                if event.key == pygame.K_b:
-                    mapa = 'bambus'
-                    state =  ast.antes_de_start
-                if event.key == pygame.K_p:
-                    mapa = 'praia'
-                    state =  ast.antes_de_start
+                    state = ast.antes_de_start 
+               
+            # while mouse[0] == 0 and mouse[1] == 0:
+            #     cs.Menu.image = ast.cor_pb['bambus']
+            #     if pygame.MOUSEBUTTONDOWN:
+            #         mapa = 'bambus'
+            #         state = ast.jogando
+            #     if pygame.MOUSEBUTTONDOWN:
+            #         mapa = 'bambus'
+            #         state = ast.jogando 
+            # while mouse in cs.Menu.rect:
+            #     cs.Menu.image = ast.cor_pb['praia']
+            #     if pygame.MOUSEBUTTONDOWN:
+            #         mapa = 'praia'
+            #         state = ast.jogando
+            # else :
+            #     cs.Menu.image = ast.cor_pb['cidade','bambus','praia']
+            # if event.key == pygame.K_RETURN:
+            #     state = ast.jogando 
             if event.type == pygame.QUIT:
                 game = False
 
-            window.fill((0, 0, 0))
-            window.blit(ast.fundos['inicio'], (0, 0))
             pygame.display.update()
     
 

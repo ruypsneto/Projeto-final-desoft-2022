@@ -29,8 +29,8 @@ fundos['gameover'] =  pygame.transform.scale(fundos['gameover'],(WIDTH, HEIGHT))
 
 
 #  imagens inicio 
-WIDTH_INICIO = 1
-HEIGHT_INICIO =1
+WIDTH_INICIO = 100
+HEIGHT_INICIO =100
 cor_pb = {}
 
 cor_pb['praia_pb'] = pygame.image.load('imagens/fundos/inicio_praia_pb.png').convert()
