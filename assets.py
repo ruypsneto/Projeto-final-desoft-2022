@@ -4,6 +4,7 @@ state = 0
 inicio = 1
 jogando = 2
 morto = 3
+antes_de_start = 4
 mapa = ''
 
 WIDTH = 1200
@@ -77,5 +78,8 @@ sapo = pygame.transform.scale(sapo,(10, 15))
 
 
 score_font = pygame.font.Font('musicas/PressStart2P.ttf', 28)
+
+
+
 
 
