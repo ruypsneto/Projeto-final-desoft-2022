@@ -70,6 +70,12 @@ carros['caminhaozinho'] = pygame.image.load('imagens/carros/caminhaozinho.png').
 carros['caminhaozinho'] = pygame.transform.scale(carros['caminhaozinho'],(WIDTH_CARRO, HEIGHT_CARRO))
 carros['jogador'] = pygame.image.load('imagens/carros/jogador.png').convert()
 carros['jogador'] = pygame.transform.scale(carros['jogador'],(WIDTH_CARRO, HEIGHT_CARRO))
+carros['direita'] = pygame.image.load('imagens/carros/jogadordelado.png').convert()
+carros['direita'] = pygame.transform.scale(carros['direita'],(HEIGHT_CARRO,WIDTH_CARRO))
+carros['costa'] = pygame.image.load('imagens/carros/jogadordecosta.png').convert()
+carros['costa'] = pygame.transform.scale(carros['costa'],(WIDTH_CARRO, HEIGHT_CARRO))
+carros['esquerda'] = pygame.image.load('imagens/carros/jogadoesquerda.png').convert()
+carros['esquerda'] = pygame.transform.scale(carros['esquerda'],(HEIGHT_CARRO,WIDTH_CARRO))
 
 
 

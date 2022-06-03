@@ -50,13 +50,6 @@ all_sprites.add(player)
 
 
 
-
-
-
-
-
-
-
 clock = pygame.time.Clock()
 FPS = 60
 
@@ -93,7 +86,7 @@ while game:
                     mapa = 'cidade'
                     state = ast.antes_de_start 
                     window.blit(ast.fundos[mapa], (0, 0))
-                    break
+                    
 
             elif   mouse[0]>= 500 and mouse[1]>= 390 and mouse[1]<= 390+ ast.HEIGHT_INICIO and mouse[0]<= 500 + ast.WIDTH_INICIO :
                 window.blit(ast.cor_pb['bambus'], (500,340))
@@ -102,7 +95,7 @@ while game:
                     mapa = 'bambus'
                     state = ast.antes_de_start
                     window.blit(ast.fundos[mapa], (0, 0))
-                    break
+                   
 
             elif  mouse[0]>= 850 and mouse[1]>= 400 and mouse[1]<= 400+ ast.HEIGHT_INICIO and mouse[0]<= 850 + ast.WIDTH_INICIO :
 
@@ -112,7 +105,7 @@ while game:
                     mapa = 'praia'
                     state = ast.antes_de_start
                     window.blit(ast.fundos[mapa], (0, 0))
-                    break
+                    
             
             
 
@@ -126,34 +119,35 @@ while game:
 
         elif state == ast.antes_de_start :
             # rodando o jogo 
+            if event.type == pygame.QUIT:
+                game = False
+
+            cor_start= (200,100,200)
             window.fill((0, 0, 0))  
             window.blit(ast.fundos[mapa], (0, 0))
-
+            text_surface = ast.score_font.render("Press enter to START", True, cor_start)
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (WIDTH / 2, HEIGHT/2)
+            window.blit(text_surface, text_rect)
         
-            if event.type == pygame.KEYUP:
-                if event.type == pygame.QUIT:
-                    game = False
-                #gera fundo 
-                window.fill((0, 0, 0))  
-                window.blit(ast.fundos[mapa], (0, 0))
+            if event.type == pygame.KEYDOWN:
+        
+                
+                if event.key == pygame.K_RETURN:
 
-                #     Precione enter/ return para iniciar o jogo
-                # define cor do start  
-                if mapa == 'cidade':
-                    cor_start = (255, 0, 0)
-                if mapa == 'bambus':
-                    cor_start = (0,255,0)
-                if mapa == 'praia':
-                    cor_start = (255,255,0)
+                    #     Precione enter/ return para iniciar o jogo
+                    # define cor do start  
+                    if mapa == 'cidade':
+                        cor_start = (255, 0, 0)
+                    if mapa == 'bambus':
+                        cor_start = (0,255,0)
+                    if mapa == 'praia':
+                        cor_start = (255,255,0)
 
-
-                text_surface = ast.score_font.render("Press enter to START", True, cor_start)
-                text_rect = text_surface.get_rect()
-                text_rect.midtop = (WIDTH / 2, HEIGHT/2)
-                window.blit(text_surface, text_rect)
-                pygame.display.update()
-                state = ast.jogando
+                    state = ast.jogando
             
+            pygame.display.update()
+        
               
                 
             
@@ -161,9 +155,9 @@ while game:
  
         elif state == ast.jogando :     
             distancia = 0
+            dmax = 0
             vida = 3
-            correndo = True
-            while correndo :
+            while state == ast.jogando :
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         # Dependendo da tecla, altera a velocidade.
@@ -180,25 +174,28 @@ while game:
                             player.speedx -= 1
                     if event.type == pygame.QUIT:
                         game = False
-                        correndo = False
-                        break
+                        state = ast.state 
                 
                 all_sprites.update()
                 #  verifica colições 
                 hits = pygame.sprite.spritecollide(player, all_carros, True)
                 if len(hits) > 0:
-                    c = cs.Carros(lista_posicoes)
-                    all_sprites.add(c)
-                    all_carros.add(c)
-                    distancia = 0 
-                    vida -= 1
-                    if vida == 0:
-                        correndo = False
-                        state = ast.morto
-                        mapa = 'gameover'
-                        break
-
                      
+                    if vida > 0:
+                        c = cs.Carros(lista_posicoes)
+                        all_sprites.add(c)
+                        all_carros.add(c)
+                        distancia = 0 
+                        vida -= 2
+                    if vida <= 0:
+                        # c = cs.Carros(lista_posicoes)
+                        # all_sprites.add(c)
+                        # all_carros.add(c)
+                        player.speedx = 0
+                        state = ast.morto
+                    
+                      
+      
 
                 if distancia % 1000 == 0:
                     vida += 1 
@@ -230,7 +227,6 @@ while game:
                 text_rect.midtop = (WIDTH / 2,  10)
                 window.blit(text_surface, text_rect)
                 # salvando maior score
-                dmax = 0
                 if distancia > dmax:
                     dmax = distancia 
 
@@ -239,24 +235,74 @@ while game:
                 pygame.display.update()
 
             
-    
-        elif state ==ast.morto:
-            # depois que morre o player 
         
-
+        
+        if state ==ast.morto:
+            mouse = pygame.mouse.get_pos()
+            # depois que morre o player 
+            print(mouse)
+            
+            
+    
             if event.type == pygame.QUIT:
                 game = False
 
 
             window.fill((0, 0, 0))  
-            window.blit(ast.fundos[mapa], (0, 0))
-
-
+            # window.blit(ast.fundos[mapa], (0, 0))
 
             text_surface = ast.score_font.render("{} metros,  foi sua distancia maxima".format(dmax), True, cor_start)
             text_rect = text_surface.get_rect()
             text_rect.midtop = (WIDTH / 2,  10)
             window.blit(text_surface, text_rect)
+
+            text_surface = ast.score_font.render("Quer continuar?", True, cor_start)
+            text_rect = text_surface.get_rect()
+            text_surface = pygame.transform.scale(text_surface,(600, 100))
+            text_rect.midtop = ((WIDTH / 3)+ 100,  100)
+            window.blit(text_surface, text_rect)
+
+
+            # negocio para ficar bonito 
+            if  mouse[0]>= 300 and mouse[1]>= 360 and mouse[0]<= 500 and mouse[1]<= 470 :
+                cor = (30,30, 30)
+                vertices = [(300, 360),(500, 360),(500, 470),(300, 470)]
+                pygame.draw.polygon(window, cor, vertices)
+                
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    state = ast.antes_de_start
+
+                    
+
+
+            if  mouse[0]>= (300+(WIDTH / 3)) and mouse[1]>= 360 and mouse[1]<= 470 and mouse[0]<= 500+(WIDTH / 3) :
+                cor = (30,30, 30)
+                vertices = [(300+(WIDTH / 3), 360),(500+(WIDTH / 3), 360),(500+(WIDTH / 3), 470),(300+(WIDTH / 3), 470)]
+                pygame.draw.polygon(window, cor, vertices)
+
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    state = ast.inicio
+
+
+
+
+
+
+            #  texto tela fim 
+            text_surface = ast.score_font.render("YES".format(dmax), True, cor_start)
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (WIDTH / 3,  400)
+            window.blit(text_surface, text_rect)
+
+            text_surface = ast.score_font.render("NO".format(dmax), True, cor_start)
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = ((WIDTH / 3)* 2, 400)
+            window.blit(text_surface, text_rect)
+
+
+
             pygame.display.update()
 
 
