@@ -15,7 +15,7 @@ WIDTH_RUA_B = WIDTH-280
 
 
 def aleatorio():
-    posiveis= ['policia', 'caminhao', 'caminhaozinho', 'verde', 'amarelo']
+    posiveis= ['policia', 'caminhaozinho', 'verde', 'amarelo']
     a= random.choice(posiveis)
     return a 
 

@@ -77,7 +77,6 @@ while game:
 
 
             # Verifica se o usuario passou o mouse por cima do botao
-            print(mouse)
             if  mouse[0]>= 200 and mouse[1]>= 400 and mouse[1]<= 400+ ast.HEIGHT_INICIO and mouse[0]<= 200 + ast.WIDTH_INICIO :
                 window.blit(ast.cor_pb['cidade'], (200, 340))
 
@@ -185,14 +184,15 @@ while game:
                         c = cs.Carros(lista_posicoes)
                         all_sprites.add(c)
                         all_carros.add(c)
-                        distancia = 0 
+                        distancia = distancia/2 
                         vida -= 2
                     if vida <= 0:
-                        # c = cs.Carros(lista_posicoes)
-                        # all_sprites.add(c)
-                        # all_carros.add(c)
                         player.speedx = 0
                         state = ast.morto
+                        if len(all_carros)<4:
+                            c = cs.Carros(lista_posicoes)
+                            all_sprites.add(c)
+                            all_carros.add(c)
                     
                       
       
@@ -222,7 +222,7 @@ while game:
 
                 # score aparece na tela 
                 distancia += 1
-                text_surface = ast.score_font.render("{} metros".format(distancia), True, cor_start)
+                text_surface = ast.score_font.render("{} metros".format(distancia/100), True, cor_start)
                 text_rect = text_surface.get_rect()
                 text_rect.midtop = (WIDTH / 2,  10)
                 window.blit(text_surface, text_rect)
@@ -251,7 +251,7 @@ while game:
             window.fill((0, 0, 0))  
             # window.blit(ast.fundos[mapa], (0, 0))
 
-            text_surface = ast.score_font.render("{} metros,  foi sua distancia maxima".format(dmax), True, cor_start)
+            text_surface = ast.score_font.render("{} metros,  foi sua distancia maxima".format(dmax/100), True, cor_start)
             text_rect = text_surface.get_rect()
             text_rect.midtop = (WIDTH / 2,  10)
             window.blit(text_surface, text_rect)
