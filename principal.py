@@ -448,7 +448,7 @@ while game:
             text_surface = ast.score_font.render("Agora vc faz parte da famila", True, cor_start)
             text_rect = text_surface.get_rect()
             text_surface = pygame.transform.scale(text_surface,(600, 100))
-            text_rect.midtop = ((WIDTH / 3)+ 100,  150)
+            text_rect.midtop = ((WIDTH / 3)+ 300, 500)
             window.blit(text_surface, text_rect)
 
 
