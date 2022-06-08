@@ -306,7 +306,7 @@ while game:
                 # salvando maior score
                 if distancia > dmax:
                     dmax = distancia 
-                if distancia <= 150*100:
+                if distancia >= 150*100:
                     state = ast.vencedor
 
 
