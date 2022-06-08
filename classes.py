@@ -4,7 +4,7 @@ import assets as ast
 import random
 
 
-# classe player
+
 WIDTH = 1200
 HEIGHT = 700 
 
@@ -13,7 +13,7 @@ WIDTH_RUA_A=  280
 WIDTH_RUA_B = WIDTH-280
 
 
-
+#  gera qual carro sera escolhido para o inimigo
 def aleatorio():
     posiveis= ['policia', 'caminhaozinho', 'verde', 'amarelo']
     a= random.choice(posiveis)
@@ -21,7 +21,11 @@ def aleatorio():
 
 
 
+    
 
+
+
+#  classe do jogador
 class Jogador(pygame.sprite.Sprite):
     def __init__(self, img):
         # Construtor da classe mãe (Sprite).
@@ -33,9 +37,10 @@ class Jogador(pygame.sprite.Sprite):
         self.rect.bottom = HEIGHT - 10
         self.speedx = 0
 
-    def update(self):
+    def update(self, img):
         # Atualização da posição da nave
         self.rect.x += self.speedx
+        self.image = img
 
         # Mantem dentro da tela
         if self.rect.right > WIDTH_RUA_B:
@@ -43,7 +48,7 @@ class Jogador(pygame.sprite.Sprite):
         if self.rect.left < WIDTH_RUA_A:
             self.rect.left = WIDTH_RUA_A
 
-
+#  classe dos inimigos 
 class Carros(pygame.sprite.Sprite):
     def __init__(self, lista):
         # Construtor da classe mãe (Sprite).
@@ -53,9 +58,9 @@ class Carros(pygame.sprite.Sprite):
         self.rect.x = random.randint(WIDTH_RUA_A, (WIDTH_RUA_B-130))
         lista.append(self.rect.x)
         self.rect.y = -600
-        self.speedy = random.randint(1,3)
+        self.speedy = random.randint(1,2)
 
-    def update(self):
+    def update(self, distancia):
         # Atualização da posição da nave
         self.rect.y += self.speedy
   
@@ -69,7 +74,9 @@ class Carros(pygame.sprite.Sprite):
             b =  random.randint(self.rect.x, (WIDTH_RUA_B-130)) 
             self.rect.x = random.choice([a, b])
             self.rect.y = 0
-            self.speedy = random.randint(1,3)
+            self.speedy = random.randint(1,2)
+            if distancia >= 1000:
+                self.speedy = random.randint(2,3)
 
         
 
