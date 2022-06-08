@@ -62,7 +62,7 @@ FPS = 30
 
 pista = 0
 pisca = 0
-
+d_record = 0
 game = True
 
 # ===== Loop principal =====
@@ -306,6 +306,8 @@ while game:
                 # salvando maior score
                 if distancia > dmax:
                     dmax = distancia 
+                if distancia <= 150*100:
+                    state = ast.vencedor
 
 
 
@@ -333,7 +335,7 @@ while game:
             text_rect = text_surface.get_rect()
             text_rect.midtop = (WIDTH / 2,  10)
             window.blit(text_surface, text_rect)
-
+          
             # texto de 'quer continuar'
             text_surface = ast.score_font.render("Quer continuar?", True, cor_start)
             text_rect = text_surface.get_rect()
@@ -413,14 +415,40 @@ while game:
 
 
             #  texto para respostas do jogador (sim/não)
-            text_surface = ast.score_font.render("YES".format(dmax), True, cor_start)
+            text_surface = ast.score_font.render("YES", True, cor_start)
             text_rect = text_surface.get_rect()
             text_rect.midtop = (WIDTH / 3,  400)
             window.blit(text_surface, text_rect)
 
-            text_surface = ast.score_font.render("NO".format(dmax), True, cor_start)
+            text_surface = ast.score_font.render("NO", True, cor_start)
             text_rect = text_surface.get_rect()
             text_rect.midtop = ((WIDTH / 3)* 2, 400)
+            window.blit(text_surface, text_rect)
+
+
+
+            pygame.display.update()
+        
+
+        elif state == ast.vencedor:
+            if event.type == pygame.QUIT:
+                game = False
+
+            #  mapa aparece na tela 
+            window.fill((0, 0, 0)) 
+            window.blit(ast.fundos['gameover'], (0,0)) 
+           
+            #    texto de distancia maxima atingida
+            text_surface = ast.score_font.render("Você venceu!!!", True, cor_start)
+            text_rect = text_surface.get_rect()
+            text_rect.midtop = (WIDTH / 2,  10)
+            window.blit(text_surface, text_rect)
+          
+            # texto de 'quer continuar'
+            text_surface = ast.score_font.render("Agora vc faz parte da famila", True, cor_start)
+            text_rect = text_surface.get_rect()
+            text_surface = pygame.transform.scale(text_surface,(600, 100))
+            text_rect.midtop = ((WIDTH / 3)+ 100,  150)
             window.blit(text_surface, text_rect)
 
 

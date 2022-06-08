@@ -6,6 +6,7 @@ inicio = 1
 jogando = 2
 morto = 3
 antes_de_start = 4
+vencedor = 5
 mapa = ''
 #  tamanho tela 
 WIDTH = 1200    
