@@ -13,21 +13,16 @@ Sinopse:
 
 
 
+Link video:
+                     https://youtu.be/089nRmGF3Eg
 
+Posiveis duvidas:
+                Arquivo onde roda o jogo é o principal.py
 
+                Os comando para movimentar o carro é 'A' para mover para esquerda e 'D' para mover para direita 
+Referencias:
+            jogo inpirado em um jodo de celular semelhante ao que produzimos, porem ele é em 3D
 
-
-            
-
-
-Link video: https://youtu.be/089nRmGF3Eg
-
-
-arquivo onde roda o jogo é o principal.py
-
-os comando para movimentar o carro é 'A' para mover para esquerda e 'D' para mover para direita 
-
-jogo inpirado em um jodo de celular semelhante ao que produzimos, porem ele é em 3D
-
-integrantes: Ruy Neto, Eduardo Monteiro e Rafael Moricz
+integrantes:
+                 Ruy Neto, Eduardo Monteiro e Rafael Moricz
 
