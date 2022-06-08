@@ -1,14 +1,26 @@
 # Projeto-final-desoft-2022
-Titulo:
-            Blimbots Adventure
+Titulo / Nome do Jogo
+                                                Blimbots Adventure
+
+
+
+Sinopse:
+        Você é um potencial piloto, apos Dom Torreto ver seu potencial te faz uma proposta irrecusável.
+        E ai Blimbots você esta pronto?
+        Nosso jogo se consiste em um carro que muda de faixa para escapar/ costurar os outros carros.
+        
+
+
+
+
 
 
 
 
             
-Nosso jogo se consiste em ser um carro que muda de faixa para escapar/ costurar os outros carros
 
-Link video: https://youtu.be/u_MLTF4BjnA
+
+Link video: https://youtu.be/089nRmGF3Eg
 
 
 arquivo onde roda o jogo é o principal.py

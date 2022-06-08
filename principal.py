@@ -73,6 +73,30 @@ while game:
         # tela de inicio e onde se define o mapa jogado 
         
         if state == ast.inicio:
+            #  contextualiza sobre o objetivo do jogo
+            while d_record <=1000:
+                window.fill((0, 0, 0))
+                cor_start = (200, 100, 50)
+                text_surface = ast.score_font.render("E ai Blimbots se você chegar a 150 metros", True, cor_start)
+                text_rect = text_surface.get_rect()
+                text_rect.midtop = (WIDTH / 2, HEIGHT/2 - 50)
+                window.blit(text_surface, text_rect)
+                text_surface = ast.score_font.render("Será aceito na Familia", True, cor_start)
+                text_rect = text_surface.get_rect()
+                text_rect.midtop = (WIDTH / 2, HEIGHT/2)
+                window.blit(text_surface, text_rect)
+                text_surface = ast.score_font.render("Dom Torreto", True, cor_start)
+                text_rect = text_surface.get_rect()
+                text_rect.midtop = (WIDTH / 2, HEIGHT/2+50)
+                window.blit(text_surface, text_rect)
+                d_record += 1
+
+                if event.type == pygame.QUIT:
+                    game = False
+                    d_record = 10000000
+                pygame.display.update()
+            
+
             #  fundos adicionados na tela 
             window.fill((0, 0, 0))
             window.blit(ast.fundos['inicio'], (0, 0))
@@ -93,6 +117,7 @@ while game:
 
                 # verifica se o usuario clicou no dentro da area definida
                 if event.type == pygame.MOUSEBUTTONDOWN:
+                    #  define musica da corrida
                     pygame.mixer.Sound.set_volume(ast.musicas['select'], 0.1)
                     ast.musicas['select'].play()
                    
@@ -108,6 +133,7 @@ while game:
 
                 # verifica se o usuario clicou no dentro da area definida
                 if event.type == pygame.MOUSEBUTTONDOWN:
+                    #  define musica da corrida
                     pygame.mixer.Sound.set_volume(ast.musicas['select'], 0.1)
                     ast.musicas['select'].play()
                     mapa = 'bambus'
@@ -121,6 +147,7 @@ while game:
 
                 # verifica se o usuario clicou no dentro da area definida
                 if event.type == pygame.MOUSEBUTTONDOWN:
+                    #  define musica da corrida
                     pygame.mixer.Sound.set_volume(ast.musicas['select'], 0.1)
                     ast.musicas['select'].play()
                     mapa = 'praia'
@@ -306,6 +333,7 @@ while game:
                 # salvando maior score
                 if distancia > dmax:
                     dmax = distancia 
+                #  verifica se venceu ou não
                 if distancia >= 150*100:
                     state = ast.vencedor
 
